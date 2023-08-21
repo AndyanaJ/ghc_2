@@ -1,0 +1,16 @@
+name: Scheduled Cleanup
+
+on:
+  schedule:
+    - cron: "*/3 * * * *"  # This schedule runs the job every day at midnight UTC
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Run Cleanup Script
+        run: ./cleanup.sh
